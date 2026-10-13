@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f766e">
+  <title>Misi Dengung Tajwid | Tahun 3</title>
+  <style>
+    :root {
+      --ink: #17343a;
+      --soft-ink: #557075;
+      --paper: #f6fbf8;
+      --surface: #ffffff;
+      --teal: #0f766e;
+      --teal-dark: #075c56;
+      --teal-pale: #d9f3ec;
+      --gold: #f2b544;
+      --gold-pale: #fff3cf;
+      --coral: #df6357;
+      --coral-pale: #ffebe8;
+      --line: #d8e6e0;
+      --shadow: 0 18px 50px rgba(18, 78, 73, .12);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--paper); }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(242, 181, 68, .18) 0 118px, transparent 119px),
+        radial-gradient(circle at 91% 11%, rgba(15, 118, 110, .12) 0 160px, transparent 161px),
+        var(--paper);
+      font-family: "Nunito", "Trebuchet MS", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible {
+      outline: 4px solid rgba(242, 181, 68, .55);
+      outline-offset: 3px;
+    }
+
+    .app { width: min(100% - 28px, 820px); margin: 0 auto; padding: 24px 0 48px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 900; letter-spacing: -.02em; color: var(--teal-dark); }
+    .brand-mark { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 14px; background: var(--teal); color: white; box-shadow: 0 7px 16px rgba(15, 118, 110, .25); font-family: "Noto Naskh Arabic", "Traditional Arabic", serif; font-size: 27px; }
+    .year-badge { padding: 7px 12px; border-radius: 999px; background: var(--gold-pale); color: #875a0b; font-size: .83rem; font-weight: 800; white-space: nowrap; }
+
+    .screen { display: none; animation: rise .35s ease-out; }
+    .screen.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .hero, .quiz-card, .result-card { padding: clamp(24px, 6vw, 48px); border: 1px solid rgba(216, 230, 224, .9); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; color: var(--teal); font-size: .83rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 20px; height: 3px; border-radius: 99px; background: var(--gold); }
+    h1, h2, p { margin-top: 0; }
+    h1 { max-width: 590px; margin-bottom: 14px; font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.06; letter-spacing: -.055em; }
+    h2 { margin-bottom: 8px; font-size: clamp(1.55rem, 4vw, 2.25rem); line-height: 1.12; letter-spacing: -.035em; }
+    .lead { max-width: 610px; margin-bottom: 24px; color: var(--soft-ink); font-size: clamp(1rem, 2.4vw, 1.17rem); }
+
+    .rule-box { display: grid; grid-template-columns: auto 1fr; gap: 15px; align-items: center; margin: 25px 0; padding: 16px; border-radius: 18px; background: var(--teal-pale); }
+    .rule-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: var(--teal); color: white; font-size: 1.45rem; }
+    .rule-box strong { display: block; margin-bottom: 2px; }
+    .rule-box span { color: #38686a; font-size: .93rem; }
+
+    .starter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 25px 0; }
+    .starter { padding: 14px 12px; border: 1px solid var(--line); border-radius: 16px; text-align: center; background: #fbfefd; }
+    .arabic { color: var(--teal-dark); font-family: "Noto Naskh Arabic", "Amiri", "Traditional Arabic", "Times New Roman", serif; font-size: 2rem; font-weight: 700; line-height: 1.25; direction: rtl; }
+    .starter small { display: block; margin-top: 4px; color: var(--soft-ink); font-weight: 700; }
+
+    .name-row { display: flex; gap: 10px; margin-top: 4px; }
+    .name-row label { flex: 1; }
+    .name-row input { width: 100%; padding: 13px 15px; border: 2px solid var(--line); border-radius: 14px; color: var(--ink); background: #fff; }
+    .name-row input::placeholder { color: #9eafb0; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 51px; padding: 12px 20px; border: 0; border-radius: 15px; font-weight: 900; transition: transform .16s ease, box-shadow .16s ease, background .16s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { color: white; background: var(--teal); box-shadow: 0 9px 20px rgba(15, 118, 110, .23); }
+    .btn-primary:hover { background: var(--teal-dark); }
+    .btn-secondary { color: var(--teal-dark); background: var(--teal-pale); }
+    .btn-wide { width: 100%; margin-top: 18px; }
+    .btn[hidden] { display: none; }
+
+    .game-head { display: grid; grid-template-columns: 1fr auto; gap: 12px 18px; align-items: center; margin-bottom: 14px; }
+    .level { margin: 0; color: var(--soft-ink); font-size: .9rem; font-weight: 800; }
+    .score-chip { padding: 8px 13px; border-radius: 999px; background: var(--gold-pale); color: #805600; font-size: .9rem; font-weight: 900; white-space: nowrap; }
+    .progress-track { grid-column: 1 / -1; height: 10px; overflow: hidden; border-radius: 999px; background: #e4efeb; }
+    .progress-bar { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--teal), #4bb3a5); transition: width .3s ease; }
+    .quiz-card { padding: clamp(22px, 5vw, 38px); }
+    .question-label { margin-bottom: 9px; color: var(--teal); font-size: .83rem; font-weight: 900; letter-spacing: .065em; text-transform: uppercase; }
+    .question { margin-bottom: 8px; font-size: clamp(1.28rem, 3.5vw, 1.7rem); font-weight: 900; line-height: 1.25; }
+    .arabic-word { display: grid; place-items: center; min-height: 125px; margin: 18px 0 22px; padding: 14px 24px; border-radius: 20px; color: var(--teal-dark); background: linear-gradient(135deg, #ecfaf5, #d9f3ec); font-family: "Noto Naskh Arabic", "Amiri", "Traditional Arabic", "Times New Roman", serif; font-size: clamp(3.35rem, 13vw, 5.7rem); font-weight: 700; line-height: 1.2; direction: rtl; }
+    .arabic-word.long-phrase { font-size: clamp(2.2rem, 8vw, 3.65rem); line-height: 1.42; }
+    .answers { display: grid; gap: 11px; }
+    .activity-panel[hidden] { display: none; }
+    .activity-instruction { margin: 0 0 14px; color: var(--soft-ink); font-size: .96rem; font-weight: 800; }
+    .sentence-board { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 18px 0 22px; padding: 20px 14px; border-radius: 20px; background: linear-gradient(135deg, #ecfaf5, #d9f3ec); direction: rtl; }
+    .word-chip { min-height: 54px; padding: 7px 14px 9px; border: 2px solid transparent; border-radius: 999px; color: var(--teal-dark); background: rgba(255, 255, 255, .86); font-family: "Noto Naskh Arabic", "Amiri", "Traditional Arabic", "Times New Roman", serif; font-size: clamp(1.55rem, 6vw, 2.2rem); font-weight: 700; line-height: 1; transition: background .16s ease, border-color .16s ease, transform .16s ease; }
+    .word-chip:hover:not(:disabled) { border-color: #74bcaf; transform: translateY(-2px); }
+    .word-chip.selected { border-color: var(--gold); background: var(--gold-pale); box-shadow: inset 0 0 0 2px rgba(242, 181, 68, .22); }
+    .word-chip.wrong-word { border-color: #e17c72; background: var(--coral-pale); }
+    .word-chip.correct-word { border-color: #47a46a; background: #e6f8ea; }
+    .match-board { display: grid; grid-template-columns: 1fr 1.25fr; gap: 12px; margin: 19px 0 22px; }
+    .match-column { display: grid; gap: 10px; align-content: start; }
+    .match-label { margin: 0 0 1px; color: var(--soft-ink); font-size: .78rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+    .match-item { display: flex; align-items: center; justify-content: center; min-height: 58px; padding: 10px; border: 2px solid var(--line); border-radius: 15px; color: var(--ink); background: #fff; font-weight: 800; text-align: center; transition: border-color .16s ease, background .16s ease, transform .16s ease; }
+    .match-item:hover:not(:disabled) { border-color: #8bc9bd; transform: translateY(-1px); }
+    .match-item.arabic-match { color: var(--teal-dark); font-family: "Noto Naskh Arabic", "Amiri", "Traditional Arabic", "Times New Roman", serif; font-size: 1.7rem; line-height: 1.15; direction: rtl; }
+    .match-item.selected, .match-item.matched { border-color: var(--teal); background: var(--teal-pale); }
+    .match-item.matched::after { content: "✓"; margin-left: 7px; font-family: Arial, sans-serif; color: var(--teal-dark); }
+    .match-item.match-error { border-color: #e17c72; background: var(--coral-pale); }
+    .maze-board { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 7px; margin: 18px 0 22px; padding: 12px; border-radius: 20px; background: #e8f4ef; }
+    .maze-cell { position: relative; display: grid; min-height: 60px; place-items: center; padding: 6px 3px; border: 2px solid transparent; border-radius: 13px; color: var(--teal-dark); background: #fff; font-family: "Noto Naskh Arabic", "Amiri", "Traditional Arabic", "Times New Roman", serif; font-size: clamp(1rem, 4vw, 1.45rem); font-weight: 700; line-height: 1.05; direction: rtl; transition: transform .16s ease, background .16s ease, border-color .16s ease; }
+    .maze-cell:hover:not(:disabled) { transform: scale(1.03); border-color: #8bc9bd; }
+    .maze-cell.trail { background: var(--teal-pale); border-color: #75bcae; }
+    .maze-cell.current { border-color: var(--gold); background: var(--gold-pale); box-shadow: 0 0 0 3px rgba(242, 181, 68, .23); }
+    .maze-cell.finish { border-style: dashed; }
+    .maze-marker { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); font-family: Arial, sans-serif; font-size: .78rem; line-height: 1; direction: ltr; }
+    .answer { display: flex; align-items: center; gap: 13px; width: 100%; min-height: 62px; padding: 12px 15px; border: 2px solid var(--line); border-radius: 16px; color: var(--ink); text-align: left; background: #fff; font-weight: 800; transition: border-color .16s ease, background .16s ease, transform .16s ease; }
+    .answer:hover:not(:disabled) { border-color: #8bc9bd; background: #f7fcfa; transform: translateX(2px); }
+    .answer:disabled { cursor: default; }
+    .letter { display: grid; flex: 0 0 auto; place-items: center; width: 31px; height: 31px; border-radius: 50%; color: var(--teal-dark); background: var(--teal-pale); font-size: .88rem; }
+    .answer.correct { border-color: #47a46a; color: #125c31; background: #e6f8ea; }
+    .answer.wrong { border-color: #e17c72; color: #96382f; background: var(--coral-pale); }
+    .answer.reveal { border-color: #47a46a; background: #e6f8ea; }
+    .arabic-answer { font-family: "Noto Naskh Arabic", "Amiri", "Traditional Arabic", "Times New Roman", serif; font-size: 1.18em; }
+
+    .feedback { min-height: 0; margin-top: 16px; border-radius: 16px; font-weight: 800; }
+    .feedback:not(:empty) { padding: 14px 16px; }
+    .feedback.good { color: #135d32; background: #e6f8ea; }
+    .feedback.bad { color: #923a32; background: var(--coral-pale); }
+    .feedback strong { display: block; margin-bottom: 2px; }
+    .help-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 17px; }
+    .hint { flex: 1 1 250px; margin: 0; color: var(--soft-ink); font-size: .91rem; }
+
+    .result-card { text-align: center; }
+    .celebrate { display: grid; place-items: center; width: 82px; height: 82px; margin: 0 auto 18px; border-radius: 50%; background: var(--gold-pale); font-size: 2.7rem; }
+    .result-card p { max-width: 505px; margin: 0 auto 20px; color: var(--soft-ink); }
+    .score-big { margin: 18px 0 5px; color: var(--teal); font-size: clamp(3.5rem, 12vw, 5.8rem); font-weight: 900; line-height: 1; letter-spacing: -.07em; }
+    .score-caption { margin-bottom: 24px !important; color: var(--soft-ink); font-size: .95rem; font-weight: 800; }
+    .recap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 23px 0; }
+    .recap-item { padding: 13px 8px; border-radius: 15px; background: #f4faf7; }
+    .recap-item b { display: block; color: var(--teal); font-size: 1.25rem; }
+    .recap-item span { color: var(--soft-ink); font-size: .77rem; font-weight: 800; }
+    .rank-card { margin: 24px 0 0; padding: 18px; border-radius: 18px; background: #f4faf7; text-align: left; }
+    .rank-card h3 { margin: 0 0 12px; color: var(--teal-dark); font-size: 1rem; }
+    .rank-current { display: flex; align-items: center; gap: 12px; margin-bottom: 13px; padding: 13px; border-radius: 15px; color: #55400a; background: var(--gold-pale); }
+    .rank-current-icon { display: grid; flex: 0 0 auto; place-items: center; width: 42px; height: 42px; border-radius: 13px; background: #fff8e3; font-size: 1.45rem; }
+    .rank-current b { display: block; color: var(--ink); font-size: 1.08rem; }
+    .rank-current span { display: block; font-size: .82rem; font-weight: 800; }
+    .rank-list { display: grid; gap: 7px; }
+    .rank-row { display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; align-items: center; padding: 9px 10px; border-radius: 12px; color: var(--soft-ink); background: #fff; font-size: .86rem; font-weight: 800; }
+    .rank-row.active-rank { color: var(--teal-dark); background: var(--teal-pale); box-shadow: inset 0 0 0 2px rgba(15, 118, 110, .2); }
+    .rank-row small { color: inherit; font-size: .77rem; white-space: nowrap; }
+    .mini-rule { margin: 25px 0 0; padding: 16px; border-radius: 16px; background: var(--teal-pale); color: #245b59; font-size: .94rem; }
+    .mini-rule b { color: var(--teal-dark); }
+    .footer-note { margin: 22px 0 0; color: var(--soft-ink); text-align: center; font-size: .8rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    @media (max-width: 520px) {
+      .app { width: min(100% - 20px, 820px); padding-top: 14px; }
+      .topbar { margin-bottom: 16px; }
+      .brand { font-size: .92rem; }
+      .brand-mark { width: 38px; height: 38px; font-size: 24px; }
+      .hero, .quiz-card, .result-card { border-radius: 20px; }
+      .starter-grid { gap: 9px; }
+      .arabic { font-size: 1.68rem; }
+      .answer { min-height: 58px; }
+      .match-board { grid-template-columns: 1fr; }
+      .maze-board { gap: 5px; padding: 8px; }
+      .maze-cell { min-height: 53px; font-size: 1rem; }
+      .rank-row { grid-template-columns: 25px 1fr auto; padding: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">نّ</span><span>Misi Dengung Tajwid</span></div>
+      <span class="year-badge">Tahun 3</span>
+    </header>
+
+    <section id="welcome" class="screen active" aria-labelledby="welcome-title">
+      <div class="hero">
+        <p class="eyebrow">Jom bermain dan belajar</p>
+        <h1 id="welcome-title">Kenal pasti dengung dengan yakin!</h1>
+        <p class="lead">Bantu pasukan Tajwid mengenal perkataan yang ada Nun Syaddah <span lang="ar" dir="rtl">(نّ)</span> dan Mim Syaddah <span lang="ar" dir="rtl">(مّ)</span> dalam 20 cabaran bertahap.</p>
+
+        <div class="rule-box">
+          <div class="rule-icon" aria-hidden="true">🎵</div>
+          <div><strong>Rahsia misi: dengung 2 harakat</strong><span>Apabila nampak Nun atau Mim bersabdu, baca dengan dengung selama dua harakat.</span></div>
+        </div>
+
+        <div class="starter-grid" aria-label="Contoh huruf bersyaddah">
+          <div class="starter"><span class="arabic" lang="ar">إِنَّ</span><small>Nun Syaddah</small></div>
+          <div class="starter"><span class="arabic" lang="ar">ثُمَّ</span><small>Mim Syaddah</small></div>
+        </div>
+
+        <div class="name-row">
+          <label for="player-name" class="sr-only">Nama pemain</label>
+          <input id="player-name" type="text" maxlength="24" autocomplete="name" placeholder="Nama pemain (pilihan)">
+        </div>
+        <button id="start-btn" class="btn btn-primary btn-wide" type="button">Mula misi <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="footer-note">20 cabaran bertahap • Pilih, bulatkan, padankan dan cari laluan</p>
+    </section>
+
+    <section id="game" class="screen" aria-labelledby="game-title">
+      <div class="game-head">
+        <p id="game-title" class="level">Cabaran <span id="question-count">1</span> daripada 20</p>
+        <div class="score-chip" aria-label="Skor semasa">⭐ <span id="score">0</span> markah</div>
+        <div class="progress-track" role="progressbar" aria-label="Kemajuan kuiz" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0"><div id="progress-bar" class="progress-bar"></div></div>
+      </div>
+
+      <article class="quiz-card">
+        <p class="question-label" id="question-type">Cari jawapan</p>
+        <h2 id="question" class="question">Apakah hukum bacaan ini?</h2>
+        <div id="choice-panel" class="activity-panel">
+          <div id="arabic-word" class="arabic-word" lang="ar" dir="rtl">إِنَّ</div>
+          <div id="answers" class="answers" role="group" aria-label="Pilihan jawapan"></div>
+        </div>
+        <div id="circle-panel" class="activity-panel" hidden>
+          <p class="activity-instruction">Tekan perkataan yang anda mahu bulatkan, kemudian semak jawapan.</p>
+          <div id="sentence-board" class="sentence-board" role="group" aria-label="Perkataan dalam ayat"></div>
+        </div>
+        <div id="match-panel" class="activity-panel" hidden>
+          <p class="activity-instruction">Tekan satu kad di kiri, kemudian pilih pasangan yang betul di kanan.</p>
+          <div class="match-board">
+            <div><p class="match-label">Contoh</p><div id="match-left" class="match-column" role="group" aria-label="Contoh tajwid"></div></div>
+            <div><p class="match-label">Hukum</p><div id="match-right" class="match-column" role="group" aria-label="Pilihan hukum"></div></div>
+          </div>
+        </div>
+        <div id="maze-panel" class="activity-panel" hidden>
+          <p class="activity-instruction">Bawa lebah dari Mula ke Tamat. Hanya pijak perkataan yang ada <span lang="ar" dir="rtl">نّ</span> atau <span lang="ar" dir="rtl">مّ</span>.</p>
+          <div id="maze-board" class="maze-board" role="group" aria-label="Maze Tajwid"></div>
+        </div>
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+        <div class="help-row">
+          <button id="hint-btn" class="btn btn-secondary" type="button">💡 Petunjuk</button>
+          <p id="hint" class="hint" hidden></p>
+          <button id="check-activity-btn" class="btn btn-primary" type="button" hidden>Semak jawapan</button>
+          <button id="next-btn" class="btn btn-primary" type="button" hidden>Soalan seterusnya <span aria-hidden="true">→</span></button>
+        </div>
+      </article>
+    </section>
+
+    <section id="result" class="screen" aria-labelledby="result-title">
+      <div class="result-card">
+        <div class="celebrate" aria-hidden="true">🏆</div>
+        <p class="eyebrow">Misi selesai</p>
+        <h1 id="result-title">Hebat, <span id="result-name">pemain</span>!</h1>
+        <p id="result-message">Anda telah menyelesaikan misi dengung.</p>
+        <div class="score-big"><span id="final-score">0</span>/20</div>
+        <p class="score-caption">jawapan tepat pada cubaan pertama</p>
+        <div class="recap" aria-label="Rumusan skor">
+          <div class="recap-item"><b id="right-count">0</b><span>Tepat</span></div>
+          <div class="recap-item"><b id="retry-count">0</b><span>Cuba lagi</span></div>
+          <div class="recap-item"><b>2</b><span>Harakat</span></div>
+        </div>
+        <section class="rank-card" aria-labelledby="rank-title">
+          <h3 id="rank-title">🏅 Carta Ranking Tajwid</h3>
+          <div class="rank-current" aria-live="polite">
+            <span id="rank-current-icon" class="rank-current-icon" aria-hidden="true">🌱</span>
+            <div><b id="rank-current-name">Pelatih Dengung</b><span id="rank-current-note">Teruskan berlatih untuk naik ranking.</span></div>
+          </div>
+          <div id="rank-list" class="rank-list" aria-label="Senarai ranking tajwid"></div>
+        </section>
+        <button id="replay-btn" class="btn btn-primary btn-wide" type="button">↻ Main semula</button>
+        <p class="mini-rule"><b>Ingat:</b> Nun Syaddah <span lang="ar" dir="rtl">(نّ)</span> dan Mim Syaddah <span lang="ar" dir="rtl">(مّ)</span> dibaca dengan dengung <b>2 harakat</b>.</p>
+      </div>
+    </section>
+  </main>
+
+  <script type="application/x-template" id="legacy-game-script">
+    const questionBank = [
+      {
+        type: "Kenal hukum",
+        question: "Apakah hukum bacaan bagi perkataan ini?",
+        arabic: "إِنَّ",
+        answers: ["Dengung 2 harakat", "Tidak perlu dengung", "Mad 4 harakat"],
+        correct: 0,
+        hint: "Cari huruf Nun yang mempunyai sabdu: نّ.",
+        explain: "Betul! Nun Syaddah (نّ) dibaca dengan dengung 2 harakat."
+      },
+      {
+        type: "Kenal huruf",
+        question: "Huruf manakah yang bersyaddah?",
+        arabic: "ثُمَّ",
+        answers: ["Tha (ث)", "Mim (مّ)", "Tidak ada"],
+        correct: 1,
+        hint: "Sabdu ialah tanda kecil seperti kepala huruf sin di atas huruf.",
+        explain: "Tepat! Mim (مّ) dalam ثُمَّ mempunyai sabdu."
+      },
+      {
+        type: "Berapa lama?",
+        question: "Berapa harakat dengung bagi Mim Syaddah?",
+        arabic: "عَمَّ",
+        answers: ["1 harakat", "2 harakat", "4 harakat"],
+        correct: 1,
+        hint: "Kira perlahan: satu… dua… kemudian teruskan bacaan.",
+        explain: "Ya! Mim Syaddah (مّ) dibaca dengan dengung 2 harakat."
+      },
+      {
+        type: "Cari jawapan",
+        question: "Perkataan manakah mempunyai Nun Syaddah?",
+        arabic: "نّ  مّ",
+        answers: ["إِنَّ", "ثُمَّ", "عَمَّ"],
+        correct: 0,
+        hint: "Nun dalam tulisan Arab ialah ن.",
+        explain: "Betul! إِنَّ mempunyai Nun Syaddah, iaitu نّ."
+      },
+      {
+        type: "Kenal hukum",
+        question: "Apakah cara membaca Mim Syaddah dalam perkataan ini?",
+        arabic: "مِمَّا",
+        answers: ["Dengan dengung 2 harakat", "Tanpa dengung", "Panjang 6 harakat"],
+        correct: 0,
+        hint: "Perhatikan Mim yang ada sabdu: مّ.",
+        explain: "Hebat! Mim Syaddah (مّ) dalam مِمَّا didengungkan 2 harakat."
+      },
+      {
+        type: "Kenal huruf",
+        question: "Dalam perkataan ini, apakah huruf yang perlu didengungkan?",
+        arabic: "أَنَّ",
+        answers: ["Alif (أ)", "Nun (نّ)", "Tidak ada huruf"],
+        correct: 1,
+        hint: "Lihat huruf yang ada sabdu di bahagian akhir perkataan.",
+        explain: "Tepat! Nun Syaddah (نّ) perlu didengungkan 2 harakat."
+      },
+      {
+        type: "Cari jawapan",
+        question: "Perkataan manakah mempunyai Mim Syaddah?",
+        arabic: "نّ  مّ",
+        answers: ["إِنَّا", "أَمَّا", "لَكِنَّ"],
+        correct: 1,
+        hint: "Mim dalam tulisan Arab ialah م.",
+        explain: "Betul! أَمَّا mempunyai Mim Syaddah, iaitu مّ."
+      },
+      {
+        type: "Berapa lama?",
+        question: "Apabila nampak Nun Syaddah, kita berdengung selama…",
+        arabic: "لَكِنَّ",
+        answers: ["2 harakat", "3 harakat", "5 harakat"],
+        correct: 0,
+        hint: "Hukum Nun dan Mim Syaddah mempunyai tempoh yang sama.",
+        explain: "Bagus! Nun Syaddah dibaca dengan dengung 2 harakat."
+      },
+      {
+        type: "Kenal hukum",
+        question: "Apakah hukum bacaan bagi huruf bersabdu dalam perkataan ini?",
+        arabic: "وَلَمَّا",
+        answers: ["Mim Syaddah", "Nun Sakinah", "Mad Asli"],
+        correct: 0,
+        hint: "Huruf bersabdu itu ialah مّ.",
+        explain: "Betul! Huruf Mim bersabdu ialah Mim Syaddah dan dibaca dengung 2 harakat."
+      },
+      {
+        type: "Cari jawapan",
+        question: "Yang manakah perlu dibaca dengan dengung 2 harakat?",
+        arabic: "نّ  مّ",
+        answers: ["كُلَّ", "إِنَّا", "قَالَ"],
+        correct: 1,
+        hint: "Cari Nun (ن) yang ada sabdu.",
+        explain: "Tepat! إِنَّا ada Nun Syaddah (نّ), jadi perlu dengung 2 harakat."
+      },
+      {
+        type: "Kenal huruf",
+        question: "Apakah huruf bersabdu dalam perkataan ini?",
+        arabic: "أَمَّا",
+        answers: ["Mim (مّ)", "Alif (ا)", "Hamzah (أ)"],
+        correct: 0,
+        hint: "Mim berbentuk bulat kecil: م.",
+        explain: "Bagus! Mim (مّ) bersabdu dibaca dengan dengung 2 harakat."
+      },
+      {
+        type: "Pilih hukum",
+        question: "Nun Syaddah dan Mim Syaddah dikenali juga sebagai…",
+        arabic: "نّ  مّ",
+        answers: ["Ghunnah Musyaddadah", "Qalqalah", "Idgham Bila Ghunnah"],
+        correct: 0,
+        hint: "Ghunnah bermaksud dengung.",
+        explain: "Ya! Nun dan Mim Syaddah ialah Ghunnah Musyaddadah."
+      }
+    ];
+
+    const totalQuestions = 10;
+    let gameQuestions = [];
+    let currentIndex = 0;
+    let score = 0;
+    let retries = 0;
+    let answeredCorrectly = false;
+    let attemptedCurrent = false;
+
+    const screens = {
+      welcome: document.getElementById("welcome"),
+      game: document.getElementById("game"),
+      result: document.getElementById("result")
+    };
+
+    const el = {
+      name: document.getElementById("player-name"),
+      start: document.getElementById("start-btn"),
+      questionCount: document.getElementById("question-count"),
+      score: document.getElementById("score"),
+      progress: document.querySelector(".progress-track"),
+      progressBar: document.getElementById("progress-bar"),
+      type: document.getElementById("question-type"),
+      question: document.getElementById("question"),
+      arabic: document.getElementById("arabic-word"),
+      answers: document.getElementById("answers"),
+      feedback: document.getElementById("feedback"),
+      hintButton: document.getElementById("hint-btn"),
+      hint: document.getElementById("hint"),
+      next: document.getElementById("next-btn"),
+      resultName: document.getElementById("result-name"),
+      resultMessage: document.getElementById("result-message"),
+      finalScore: document.getElementById("final-score"),
+      rightCount: document.getElementById("right-count"),
+      retryCount: document.getElementById("retry-count"),
+      replay: document.getElementById("replay-btn")
+    };
+
+    function shuffle(items) {
+      const copy = [...items];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function showScreen(name) {
+      Object.entries(screens).forEach(([key, screen]) => screen.classList.toggle("active", key === name));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function beginGame() {
+      gameQuestions = shuffle(questionBank).slice(0, totalQuestions);
+      currentIndex = 0;
+      score = 0;
+      retries = 0;
+      showScreen("game");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = gameQuestions[currentIndex];
+      answeredCorrectly = false;
+      attemptedCurrent = false;
+      el.questionCount.textContent = currentIndex + 1;
+      el.score.textContent = score;
+      el.progress.setAttribute("aria-valuenow", currentIndex);
+      el.progressBar.style.width = `${(currentIndex / totalQuestions) * 100}%`;
+      el.type.textContent = q.type;
+      el.question.textContent = q.question;
+      el.arabic.textContent = q.arabic;
+      el.feedback.textContent = "";
+      el.feedback.className = "feedback";
+      el.hint.textContent = q.hint;
+      el.hint.hidden = true;
+      el.hintButton.hidden = false;
+      el.next.hidden = true;
+      el.answers.innerHTML = "";
+
+      const letters = ["A", "B", "C"];
+      q.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "answer";
+        const answerClass = /[\u0600-\u06FF]/.test(answer) ? "arabic-answer" : "";
+        button.innerHTML = `<span class="letter" aria-hidden="true">${letters[index]}</span><span class="${answerClass}" dir="auto">${answer}</span>`;
+        button.addEventListener("click", () => checkAnswer(index, button));
+        el.answers.appendChild(button);
+      });
+    }
+
+    function checkAnswer(selectedIndex, selectedButton) {
+      if (answeredCorrectly) return;
+      const q = gameQuestions[currentIndex];
+      const buttons = [...el.answers.querySelectorAll("button")];
+      if (selectedIndex === q.correct) {
+        answeredCorrectly = true;
+        if (!attemptedCurrent) score += 1;
+        el.score.textContent = score;
+        selectedButton.classList.add("correct");
+        buttons.forEach(button => button.disabled = true);
+        el.feedback.className = "feedback good";
+        el.feedback.innerHTML = `<strong>✓ Betul${attemptedCurrent ? " selepas cuba lagi" : ""}!</strong>${q.explain}`;
+        el.hintButton.hidden = true;
+        el.hint.hidden = true;
+        el.next.hidden = false;
+        el.next.focus();
+      } else {
+        attemptedCurrent = true;
+        retries += 1;
+        selectedButton.classList.add("wrong");
+        selectedButton.disabled = true;
+        el.feedback.className = "feedback bad";
+        el.feedback.innerHTML = "<strong>Belum tepat.</strong>Cuba lagi. Gunakan petunjuk jika anda perlukan bantuan.";
+      }
+    }
+
+    function moveNext() {
+      if (currentIndex < totalQuestions - 1) {
+        currentIndex += 1;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      const player = el.name.value.trim();
+      const displayName = player ? player.replace(/[<>]/g, "") : "pemain";
+      const message = score === 10
+        ? "Markah penuh! Anda sudah sangat mahir mengenal Nun dan Mim Syaddah."
+        : score >= 7
+          ? "Bagus sekali! Teruskan berlatih dengung 2 harakat."
+          : "Usaha yang baik! Main semula untuk kukuhkan kemahiran dengung anda.";
+      el.resultName.textContent = displayName;
+      el.resultMessage.textContent = message;
+      el.finalScore.textContent = score;
+      el.rightCount.textContent = score;
+      el.retryCount.textContent = retries;
+      el.progress.setAttribute("aria-valuenow", totalQuestions);
+      el.progressBar.style.width = "100%";
+      showScreen("result");
+    }
+
+    el.start.addEventListener("click", beginGame);
+    el.name.addEventListener("keydown", event => {
+      if (event.key === "Enter") beginGame();
+    });
+    el.hintButton.addEventListener("click", () => {
+      el.hint.hidden = !el.hint.hidden;
+      el.hintButton.textContent = el.hint.hidden ? "💡 Petunjuk" : "🙈 Sembunyi petunjuk";
+    });
+    el.next.addEventListener("click", moveNext);
+    el.replay.addEventListener("click", beginGame);
+  </script>
+
+  <script>
+    const advancedQuestions = [
+      {
+        mode: "choice", type: "Pilih hukum • Permulaan", question: "Apakah hukum pada perkataan pertama dalam ayat ini?",
+        arabic: "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ", options: ["Nun Syaddah — dengung 2 harakat", "Mad Asli — 2 harakat", "Qalqalah"], correct: 0,
+        hint: "Perkataan pertama ialah إِنَّا. Perhatikan huruf نّ.", explain: "Betul! Pada إِنَّا, Nun Syaddah (نّ) dibaca dengung 2 harakat."
+      },
+      {
+        mode: "choice", type: "Pilih hukum • Permulaan", question: "Apabila sampai pada ثُمَّ dalam ayat ini, bagaimana bacaannya?",
+        arabic: "ثُمَّ إِنَّ عَلَيْنَا حِسَابَهُمْ", options: ["Dengung 2 harakat", "Tanpa dengung", "Panjang 6 harakat"], correct: 0,
+        hint: "Cari Mim yang bersabdu: مّ.", explain: "Ya! ثُمَّ mengandungi Mim Syaddah (مّ), jadi dibaca dengung 2 harakat."
+      },
+      {
+        mode: "circle", type: "Bulatan tajwid • Asas", question: "Bulatan perkataan yang mempunyai Nun Syaddah.",
+        tokens: ["إِنَّ", "مَعَ", "الْعُسْرِ", "يُسْرًا"], targets: [0],
+        hint: "Nun Syaddah ditulis نّ dan berada pada perkataan pertama.", explain: "Tepat! إِنَّ mempunyai Nun Syaddah (نّ)."
+      },
+      {
+        mode: "circle", type: "Bulatan tajwid • Asas", question: "Bulatan perkataan yang mempunyai Mim Syaddah.",
+        tokens: ["وَأَمَّا", "السَّائِلَ", "فَلَا", "تَنْهَرْ"], targets: [0],
+        hint: "Cari huruf Mim (م) yang mempunyai sabdu.", explain: "Bagus! وَأَمَّا mengandungi Mim Syaddah (مّ)."
+      },
+      {
+        mode: "match", type: "Padankan • Asas", question: "Padankan contoh dengan hukum yang betul.",
+        pairs: [
+          { term: "إِنَّ", match: "Nun Syaddah — dengung 2 harakat" },
+          { term: "ثُمَّ", match: "Mim Syaddah — dengung 2 harakat" },
+          { term: "كُلَّ", match: "Lam Syaddah — bukan dengung Nun/Mim" }
+        ],
+        hint: "Tanda sabdu pada Nun ialah نّ, manakala pada Mim ialah مّ.", explain: "Semua padanan tepat. Hanya Nun dan Mim Syaddah dibaca dengung 2 harakat."
+      },
+      {
+        mode: "choice", type: "Pilih hukum • Kembangkan", question: "Huruf manakah perlu didengungkan dalam ayat ini?",
+        arabic: "عَمَّ يَتَسَاءَلُونَ", options: ["Ain (ع)", "Mim (مّ)", "Ya (ي)"], correct: 1,
+        hint: "Sabdu berada pada huruf kedua dalam perkataan pertama.", explain: "Tepat! Mim Syaddah (مّ) dalam عَمَّ dibaca dengung 2 harakat."
+      },
+      {
+        mode: "circle", type: "Bulatan tajwid • Kembangkan", question: "Bulatan perkataan yang perlu didengungkan 2 harakat.",
+        tokens: ["ثُمَّ", "كَلَّا", "سَوْفَ", "تَعْلَمُونَ"], targets: [0],
+        hint: "Kَلَّا ada Lam Syaddah, bukan Nun atau Mim Syaddah.", explain: "Betul! Hanya ثُمَّ mempunyai Mim Syaddah (مّ)."
+      },
+      {
+        mode: "circle", type: "Bulatan tajwid • Kembangkan", question: "Cari perkataan yang mengandungi Nun Syaddah.",
+        tokens: ["لَكِنَّ", "اللَّهَ", "يَشْهَدُ", "بِمَا", "أَنْزَلَ"], targets: [0],
+        hint: "Perhatikan perkataan pertama. Jangan keliru dengan Lam Syaddah dalam اللَّهَ.", explain: "Hebat! لَكِنَّ mempunyai Nun Syaddah (نّ)."
+      },
+      {
+        mode: "choice", type: "Pilih hukum • Kembangkan", question: "Apakah bacaan bagi huruf bersabdu pada perkataan pertama?",
+        arabic: "إِنَّ رَبَّكَ لَبِالْمِرْصَادِ", options: ["Nun Syaddah — dengung 2 harakat", "Ba Syaddah — dengung 2 harakat", "Nun Sakinah — tanpa dengung"], correct: 0,
+        hint: "Huruf pertama yang bersabdu ialah Nun: نّ.", explain: "Bagus! Nun Syaddah dalam إِنَّ dibaca dengung 2 harakat."
+      },
+      {
+        mode: "match", type: "Padankan • Kembangkan", question: "Padankan contoh dengan penerangannya.",
+        pairs: [
+          { term: "إِنَّا", match: "Nun Syaddah — dengung 2 harakat" },
+          { term: "مِمَّا", match: "Mim Syaddah — dengung 2 harakat" },
+          { term: "رَبَّ", match: "Ba Syaddah — bukan dengung Nun/Mim" }
+        ],
+        hint: "Pastikan huruf yang bersabdu itu sama dengan nama hukum pada kad kanan.", explain: "Tepat! Anda dapat membezakan Nun/Mim Syaddah daripada huruf bersabdu yang lain."
+      },
+      {
+        mode: "circle", type: "Bulatan tajwid • Cabaran", question: "Bulatan perkataan yang mengandungi Nun Syaddah dalam ayat ini.",
+        tokens: ["إِنَّمَا", "الْمُؤْمِنُونَ", "إِخْوَةٌ"], targets: [0],
+        hint: "Perkataan pertama bermula dengan إِنَّ.", explain: "Ya! إِنَّمَا mempunyai Nun Syaddah (نّ)."
+      },
+      {
+        mode: "circle", type: "Bulatan tajwid • Cabaran", question: "Bulatan perkataan yang perlu dibaca dengan dengung 2 harakat.",
+        tokens: ["فَإِنَّ", "مَعَ", "الْعُسْرِ", "يُسْرًا"], targets: [0],
+        hint: "Huruf فَ disambungkan sebelum perkataan yang mempunyai Nun Syaddah.", explain: "Tepat! فَإِنَّ tetap mempunyai Nun Syaddah (نّ)."
+      },
+      {
+        mode: "choice", type: "Kira sasaran • Cabaran", question: "Berapa perkataan dalam ayat ini yang mempunyai Nun atau Mim Syaddah?",
+        arabic: "وَإِمَّا تَخَافَنَّ مِنْ قَوْمٍ", options: ["Satu perkataan", "Dua perkataan", "Tiga perkataan"], correct: 1,
+        hint: "Cari Mim Syaddah dalam وَإِمَّا dan Nun Syaddah dalam تَخَافَنَّ.", explain: "Betul! وَإِمَّا ada Mim Syaddah dan تَخَافَنَّ ada Nun Syaddah."
+      },
+      {
+        mode: "circle", type: "Bulatan tajwid • Cabaran", question: "Bulatan SEMUA perkataan yang mengandungi Nun atau Mim Syaddah.",
+        tokens: ["وَإِمَّا", "تَخَافَنَّ", "مِنْ", "قَوْمٍ"], targets: [0, 1],
+        hint: "Ada dua jawapan: satu Mim Syaddah dan satu Nun Syaddah.", explain: "Cemerlang! وَإِمَّا (مّ) dan تَخَافَنَّ (نّ) kedua-duanya perlu didengungkan."
+      },
+      {
+        mode: "match", type: "Padankan • Cabaran", question: "Padankan setiap contoh dengan jenis huruf bersabdunya.",
+        pairs: [
+          { term: "أَمَّا", match: "Mim Syaddah — dengung 2 harakat" },
+          { term: "لَكِنَّ", match: "Nun Syaddah — dengung 2 harakat" },
+          { term: "كُلَّ", match: "Lam Syaddah — bukan dengung Nun/Mim" }
+        ],
+        hint: "Jangan sekadar cari sabdu; kenal pasti sama ada hurufnya Nun, Mim atau huruf lain.", explain: "Hebat! Anda sudah dapat membezakan jenis huruf bersabdu dengan tepat."
+      },
+      {
+        mode: "choice", type: "Kira sasaran • Cabaran", question: "Berapa perkataan yang mempunyai Nun Syaddah dalam ayat ini?",
+        arabic: "إِنَّا كُنَّا نَسْتَنسِخُ مَا كُنْتُمْ", options: ["Satu perkataan", "Dua perkataan", "Tiga perkataan"], correct: 1,
+        hint: "Cari Nun Syaddah dalam إِنَّا dan كُنَّا. Nun dalam كُنْتُمْ ialah Nun Sakinah.", explain: "Tepat! إِنَّا dan كُنَّا masing-masing mengandungi Nun Syaddah."
+      },
+      {
+        mode: "circle", type: "Bulatan tajwid • Pakar", question: "Bulatan SEMUA perkataan yang ada Nun atau Mim Syaddah.",
+        tokens: ["ثُمَّ", "إِنَّ", "عَلَيْنَا", "حِسَابَهُمْ"], targets: [0, 1],
+        hint: "Dua perkataan pertama ialah sasaran anda.", explain: "Cemerlang! ثُمَّ ada Mim Syaddah dan إِنَّ ada Nun Syaddah."
+      },
+      {
+        mode: "circle", type: "Bulatan tajwid • Pakar", question: "Dalam ayat ini, bulatkan perkataan yang mempunyai Nun Syaddah.",
+        tokens: ["إِنَّا", "أَعْطَيْنَاكَ", "الْكَوْثَرَ"], targets: [0],
+        hint: "Perkataan sasaran berada di awal ayat.", explain: "Betul! إِنَّا mempunyai Nun Syaddah (نّ)."
+      },
+      {
+        mode: "maze", type: "Maze tajwid • Misi akhir", question: "Cari laluan dengung dari Mula ke Tamat.",
+        cells: [
+          "إِنَّ", "ثُمَّ", "قَالَ", "هُوَ", "قُلْ",
+          "مِنْ", "أَمَّا", "لَكِنَّ", "قَالَ", "هُوَ",
+          "قُلْ", "كُلَّ", "عَمَّ", "وَإِمَّا", "ثُمَّ",
+          "قَالَ", "قُلْ", "هُوَ", "كُلَّ", "أَمَّا"
+        ],
+        safe: [0, 1, 6, 7, 12, 13, 14, 19], start: 0, finish: 19,
+        hint: "Setiap langkah mesti berada di sisi petak lebah dan mempunyai Nun atau Mim Syaddah.", explain: "Misi berjaya! Laluan itu melalui perkataan yang mempunyai Nun atau Mim Syaddah sahaja."
+      },
+      {
+        mode: "choice", type: "Misi akhir • Pakar", question: "Apakah cara bacaan yang tepat apabila bertemu perkataan pertama dalam ayat ini?",
+        arabic: "إِنَّ فِي ذَٰلِكَ لَعِبْرَةً", options: ["Dengung Nun Syaddah 2 harakat", "Mad 6 harakat", "Qalqalah pada Nun"], correct: 0,
+        hint: "Perkataan pertama ialah إِنَّ. Nun yang bersabdu dibaca ghunnah.", explain: "Alhamdulillah! Nun Syaddah dalam إِنَّ dibaca dengan dengung 2 harakat."
+      }
+    ];
+
+    const totalAdvancedQuestions = 20;
+    let activeQuestions = [];
+    let activeIndex = 0;
+    let activeScore = 0;
+    let activeRetries = 0;
+    let answeredThisQuestion = false;
+    let attemptedThisQuestion = false;
+    let circleState = new Set();
+    let matchState = null;
+    let mazeState = null;
+    const rankLevels = [
+      { min: 18, max: 20, icon: "👑", name: "Master Dengung", note: "Sangat mahir mengenal dan membaca ghunnah." },
+      { min: 15, max: 17, icon: "🥇", name: "Jaguh Tajwid", note: "Cekap dengan Nun dan Mim Syaddah." },
+      { min: 10, max: 14, icon: "🥈", name: "Pencabar Hebat", note: "Teruskan latihan untuk naik ke tahap jaguh." },
+      { min: 0, max: 9, icon: "🌱", name: "Pelatih Dengung", note: "Berlatih lagi supaya lebih yakin dengan dengung 2 harakat." }
+    ];
+
+    const ui = {
+      welcome: document.getElementById("welcome"), game: document.getElementById("game"), result: document.getElementById("result"),
+      name: document.getElementById("player-name"), start: document.getElementById("start-btn"), replay: document.getElementById("replay-btn"),
+      questionCount: document.getElementById("question-count"), score: document.getElementById("score"), progress: document.querySelector(".progress-track"), progressBar: document.getElementById("progress-bar"),
+      type: document.getElementById("question-type"), question: document.getElementById("question"),
+      choicePanel: document.getElementById("choice-panel"), circlePanel: document.getElementById("circle-panel"), matchPanel: document.getElementById("match-panel"), mazePanel: document.getElementById("maze-panel"),
+      arabic: document.getElementById("arabic-word"), answers: document.getElementById("answers"), sentence: document.getElementById("sentence-board"), matchLeft: document.getElementById("match-left"), matchRight: document.getElementById("match-right"), maze: document.getElementById("maze-board"),
+      feedback: document.getElementById("feedback"), hintButton: document.getElementById("hint-btn"), hint: document.getElementById("hint"), check: document.getElementById("check-activity-btn"), next: document.getElementById("next-btn"),
+      resultName: document.getElementById("result-name"), resultMessage: document.getElementById("result-message"), finalScore: document.getElementById("final-score"), rightCount: document.getElementById("right-count"), retryCount: document.getElementById("retry-count")
+      resultName: document.getElementById("result-name"), resultMessage: document.getElementById("result-message"), finalScore: document.getElementById("final-score"), rightCount: document.getElementById("right-count"), retryCount: document.getElementById("retry-count"),
+      rankIcon: document.getElementById("rank-current-icon"), rankName: document.getElementById("rank-current-name"), rankNote: document.getElementById("rank-current-note"), rankList: document.getElementById("rank-list")
+    };
+
+    function shuffleNew(items) {
+      const copy = [...items];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function getRank(score) {
+      return rankLevels.find(level => score >= level.min);
+    }
+
+    function renderRank(score) {
+      const currentRank = getRank(score);
+      ui.rankIcon.textContent = currentRank.icon;
+      ui.rankName.textContent = currentRank.name;
+      ui.rankNote.textContent = currentRank.note;
+      ui.rankList.innerHTML = "";
+      rankLevels.forEach(level => {
+        const row = document.createElement("div");
+        const icon = document.createElement("span");
+        const name = document.createElement("span");
+        const range = document.createElement("small");
+        row.className = `rank-row${level.name === currentRank.name ? " active-rank" : ""}`;
+        icon.textContent = level.icon;
+        name.textContent = level.name;
+        range.textContent = `${level.min}–${level.max}/20`;
+        row.append(icon, name, range);
+        ui.rankList.appendChild(row);
+      });
+    }
+
+    function setScreen(name) {
+      ["welcome", "game", "result"].forEach(key => ui[key].classList.toggle("active", key === name));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function startAdvancedGame() {
+      activeQuestions = [...advancedQuestions];
+      activeIndex = 0;
+      activeScore = 0;
+      activeRetries = 0;
+      setScreen("game");
+      renderAdvancedQuestion();
+    }
+
+    function clearFeedback() {
+      ui.feedback.textContent = "";
+      ui.feedback.className = "feedback";
+    }
+
+    function renderAdvancedQuestion() {
+      const question = activeQuestions[activeIndex];
+      answeredThisQuestion = false;
+      attemptedThisQuestion = false;
+      circleState = new Set();
+      matchState = null;
+      mazeState = null;
+      ui.questionCount.textContent = activeIndex + 1;
+      ui.score.textContent = activeScore;
+      ui.progress.setAttribute("aria-valuenow", activeIndex);
+      ui.progress.setAttribute("aria-valuemax", totalAdvancedQuestions);
+      ui.progressBar.style.width = `${(activeIndex / totalAdvancedQuestions) * 100}%`;
+      ui.type.textContent = question.type;
+      ui.question.textContent = question.question;
+      clearFeedback();
+      ui.hint.textContent = question.hint;
+      ui.hint.hidden = true;
+      ui.hintButton.hidden = false;
+      ui.hintButton.textContent = "💡 Petunjuk";
+      ui.next.hidden = true;
+      ui.check.hidden = true;
+      ui.answers.innerHTML = "";
+      ui.sentence.innerHTML = "";
+      ui.matchLeft.innerHTML = "";
+      ui.matchRight.innerHTML = "";
+      ui.maze.innerHTML = "";
+      ui.choicePanel.hidden = question.mode !== "choice";
+      ui.circlePanel.hidden = question.mode !== "circle";
+      ui.matchPanel.hidden = question.mode !== "match";
+      ui.mazePanel.hidden = question.mode !== "maze";
+
+      if (question.mode === "choice") renderChoice(question);
+      if (question.mode === "circle") renderCircle(question);
+      if (question.mode === "match") renderMatch(question);
+      if (question.mode === "maze") renderMaze(question);
+    }
+
+    function renderChoice(question) {
+      ui.arabic.textContent = question.arabic;
+      ui.arabic.classList.toggle("long-phrase", question.arabic.length > 13);
+      ["A", "B", "C"].forEach((letter, index) => {
+        const button = document.createElement("button");
+        const letterNode = document.createElement("span");
+        const textNode = document.createElement("span");
+        button.type = "button";
+        button.className = "answer";
+        letterNode.className = "letter";
+        letterNode.setAttribute("aria-hidden", "true");
+        letterNode.textContent = letter;
+        textNode.textContent = question.options[index];
+        button.append(letterNode, textNode);
+        button.addEventListener("click", () => checkChoice(index, button));
+        ui.answers.appendChild(button);
+      });
+    }
+
+    function checkChoice(selectedIndex, selectedButton) {
+      if (answeredThisQuestion) return;
+      const question = activeQuestions[activeIndex];
+      if (selectedIndex === question.correct) {
+        selectedButton.classList.add("correct");
+        ui.answers.querySelectorAll("button").forEach(button => button.disabled = true);
+        markCorrect(question.explain);
+      } else {
+        selectedButton.classList.add("wrong");
+        selectedButton.disabled = true;
+        markWrong("Belum tepat. Semak semula huruf yang mempunyai sabdu dan cuba lagi.");
+      }
+    }
+
+    function renderCircle(question) {
+      question.tokens.forEach((token, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "word-chip";
+        button.textContent = token;
+        button.setAttribute("aria-pressed", "false");
+        button.addEventListener("click", () => {
+          if (answeredThisQuestion) return;
+          button.classList.remove("wrong-word");
+          if (circleState.has(index)) {
+            circleState.delete(index);
+            button.classList.remove("selected");
+            button.setAttribute("aria-pressed", "false");
+          } else {
+            circleState.add(index);
+            button.classList.add("selected");
+            button.setAttribute("aria-pressed", "true");
+          }
+        });
+        ui.sentence.appendChild(button);
+      });
+      ui.check.hidden = false;
+      ui.check.textContent = "Semak bulatan";
+    }
+
+    function checkCircle() {
+      const question = activeQuestions[activeIndex];
+      const targetSet = new Set(question.targets);
+      const isCorrect = circleState.size === targetSet.size && [...targetSet].every(index => circleState.has(index));
+      if (isCorrect) {
+        ui.sentence.querySelectorAll("button").forEach((button, index) => {
+          button.disabled = true;
+          if (targetSet.has(index)) button.classList.add("correct-word");
+        });
+        markCorrect(question.explain);
+      } else {
+        ui.sentence.querySelectorAll("button").forEach((button, index) => {
+          button.classList.toggle("wrong-word", circleState.has(index) && !targetSet.has(index));
+        });
+        markWrong("Belum lengkap. Periksa semula perkataan yang anda bulatkan, kemudian cuba lagi.");
+      }
+    }
+
+    function renderMatch(question) {
+      matchState = { selectedLeft: null, pairs: {}, options: shuffleNew(question.pairs.map((pair, index) => ({ ...pair, id: index }))), failed: false };
+      question.pairs.forEach((pair, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "match-item arabic-match";
+        button.textContent = pair.term;
+        button.dataset.left = index;
+        button.addEventListener("click", () => selectMatchLeft(index));
+        ui.matchLeft.appendChild(button);
+      });
+      matchState.options.forEach(option => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "match-item";
+        button.textContent = option.match;
+        button.dataset.right = option.id;
+        button.addEventListener("click", () => selectMatchRight(option.id));
+        ui.matchRight.appendChild(button);
+      });
+      ui.check.hidden = false;
+      ui.check.textContent = "Semak padanan";
+      refreshMatch();
+    }
+
+    function selectMatchLeft(left) {
+      if (answeredThisQuestion) return;
+      matchState.selectedLeft = left;
+      matchState.failed = false;
+      refreshMatch();
+    }
+
+    function selectMatchRight(right) {
+      if (answeredThisQuestion) return;
+      if (matchState.selectedLeft === null) {
+        showTemporaryFeedback("Pilih satu contoh di sebelah kiri dahulu.");
+        return;
+      }
+      Object.entries(matchState.pairs).forEach(([left, mappedRight]) => {
+        if (mappedRight === right) delete matchState.pairs[left];
+      });
+      matchState.pairs[matchState.selectedLeft] = right;
+      matchState.selectedLeft = null;
+      matchState.failed = false;
+      refreshMatch();
+    }
+
+    function refreshMatch() {
+      const mappedLeft = Object.keys(matchState.pairs).map(Number);
+      const mappedRight = Object.values(matchState.pairs);
+      ui.matchLeft.querySelectorAll("button").forEach(button => {
+        const index = Number(button.dataset.left);
+        button.classList.toggle("selected", matchState.selectedLeft === index);
+        button.classList.toggle("matched", mappedLeft.includes(index));
+        button.classList.toggle("match-error", matchState.failed && matchState.pairs[index] !== undefined && matchState.pairs[index] !== index);
+      });
+      ui.matchRight.querySelectorAll("button").forEach(button => {
+        const index = Number(button.dataset.right);
+        const wrongPair = Object.entries(matchState.pairs).some(([left, right]) => Number(right) === index && Number(left) !== index);
+        button.classList.toggle("matched", mappedRight.includes(index));
+        button.classList.toggle("match-error", matchState.failed && wrongPair);
+      });
+    }
+
+    function checkMatch() {
+      const question = activeQuestions[activeIndex];
+      const completed = Object.keys(matchState.pairs).length === question.pairs.length;
+      const isCorrect = completed && question.pairs.every((pair, index) => matchState.pairs[index] === index);
+      if (isCorrect) {
+        ui.matchLeft.querySelectorAll("button").forEach(button => button.disabled = true);
+        ui.matchRight.querySelectorAll("button").forEach(button => button.disabled = true);
+        markCorrect(question.explain);
+      } else {
+        matchState.failed = true;
+        refreshMatch();
+        markWrong(completed ? "Ada padanan yang belum tepat. Tukar kad yang bertanda merah, kemudian semak lagi." : "Lengkapkan ketiga-tiga padanan sebelum menyemak jawapan.");
+      }
+    }
+
+    function renderMaze(question) {
+      mazeState = { current: question.start, path: [question.start] };
+      drawMaze(question);
+    }
+
+    function drawMaze(question) {
+      ui.maze.innerHTML = "";
+      question.cells.forEach((word, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "maze-cell";
+        button.textContent = word;
+        if (mazeState.path.includes(index)) button.classList.add("trail");
+        if (mazeState.current === index) button.classList.add("current");
+        if (index === question.finish) button.classList.add("finish");
+        const marker = document.createElement("span");
+        marker.className = "maze-marker";
+        if (index === mazeState.current && index === question.start) marker.textContent = "🐝 Mula";
+        else if (index === mazeState.current) marker.textContent = "🐝";
+        else if (index === question.finish) marker.textContent = "🏁 Tamat";
+        if (marker.textContent) button.appendChild(marker);
+        button.addEventListener("click", () => moveMaze(index));
+        ui.maze.appendChild(button);
+      });
+    }
+
+    function moveMaze(index) {
+      if (answeredThisQuestion) return;
+      const question = activeQuestions[activeIndex];
+      const row = Math.floor(index / 5);
+      const col = index % 5;
+      const currentRow = Math.floor(mazeState.current / 5);
+      const currentCol = mazeState.current % 5;
+      if (Math.abs(row - currentRow) + Math.abs(col - currentCol) !== 1) {
+        showTemporaryFeedback("Langkah mesti ke petak yang berada di sebelah lebah.");
+        return;
+      }
+      if (!question.safe.includes(index)) {
+        markWrong("Petak itu tiada Nun atau Mim Syaddah. Cuba cari petak lain yang bersebelahan.");
+        return;
+      }
+      mazeState.current = index;
+      if (!mazeState.path.includes(index)) mazeState.path.push(index);
+      drawMaze(question);
+      if (index === question.finish) markCorrect(question.explain);
+    }
+
+    function markCorrect(explanation) {
+      answeredThisQuestion = true;
+      if (!attemptedThisQuestion) activeScore += 1;
+      ui.score.textContent = activeScore;
+      ui.feedback.className = "feedback good";
+      ui.feedback.innerHTML = `<strong>✓ Betul${attemptedThisQuestion ? " selepas cuba lagi" : ""}!</strong>${explanation}`;
+      ui.hintButton.hidden = true;
+      ui.hint.hidden = true;
+      ui.check.hidden = true;
+      ui.next.hidden = false;
+      ui.next.textContent = activeIndex === totalAdvancedQuestions - 1 ? "Lihat keputusan →" : "Cabaran seterusnya →";
+      ui.next.focus();
+    }
+
+    function markWrong(message) {
+      attemptedThisQuestion = true;
+      activeRetries += 1;
+      ui.feedback.className = "feedback bad";
+      ui.feedback.innerHTML = `<strong>Cuba lagi.</strong>${message}`;
+    }
+
+    function showTemporaryFeedback(message) {
+      ui.feedback.className = "feedback bad";
+      ui.feedback.innerHTML = `<strong>Belum boleh begitu.</strong>${message}`;
+    }
+
+    function checkActivity() {
+      const question = activeQuestions[activeIndex];
+      if (question.mode === "circle") checkCircle();
+      if (question.mode === "match") checkMatch();
+    }
+
+    function goNext() {
+      if (activeIndex < totalAdvancedQuestions - 1) {
+        activeIndex += 1;
+        renderAdvancedQuestion();
+      } else {
+        showAdvancedResults();
+      }
+    }
+
+    function showAdvancedResults() {
+      const cleanedName = ui.name.value.trim().replace(/[<>]/g, "");
+      const name = cleanedName || "pemain";
+      const message = activeScore === totalAdvancedQuestions
+        ? "Markah penuh! Anda telah menamatkan semua cabaran sebagai pakar dengung."
+        : activeScore >= 15
+          ? "Sangat bagus! Anda sudah cekap mengenal Nun dan Mim Syaddah dalam ayat yang lebih panjang."
+          : "Usaha yang baik! Main semula untuk cuba cabaran bulatan, padanan dan maze dengan lebih yakin.";
+      ui.resultName.textContent = name;
+      ui.resultMessage.textContent = message;
+      ui.finalScore.textContent = activeScore;
+      ui.rightCount.textContent = activeScore;
+      ui.retryCount.textContent = activeRetries;
+      renderRank(activeScore);
+      ui.progress.setAttribute("aria-valuenow", totalAdvancedQuestions);
+      ui.progressBar.style.width = "100%";
+      setScreen("result");
+    }
+
+    ui.start.addEventListener("click", startAdvancedGame);
+    ui.name.addEventListener("keydown", event => { if (event.key === "Enter") startAdvancedGame(); });
+    ui.hintButton.addEventListener("click", () => {
+      ui.hint.hidden = !ui.hint.hidden;
+      ui.hintButton.textContent = ui.hint.hidden ? "💡 Petunjuk" : "🙈 Sembunyi petunjuk";
+    });
+    ui.check.addEventListener("click", checkActivity);
+    ui.next.addEventListener("click", goNext);
+    ui.replay.addEventListener("click", startAdvancedGame);
+  </script>
+</body>
+</html>
